@@ -2,7 +2,7 @@ This is a static-exported [Next.js](https://nextjs.org) portfolio configured for
 
 ## GitHub Pages
 
-Enable **Settings > Pages > Build and deployment > Source: GitHub Actions** in the repository. The workflow in `.github/workflows/deploy-pages.yml` deploys the site after each push to `master`.
+First enable **Settings > Pages > Build and deployment > Source: GitHub Actions** in the repository. GitHub does not allow the workflow token to enable Pages automatically. After that one-time setting, the workflow in `.github/workflows/deploy-pages.yml` deploys the site after each push to `master`.
 
 The site will be available at `https://mano1831.github.io/themanojportfolio/`.
 

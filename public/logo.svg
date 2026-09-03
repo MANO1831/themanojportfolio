@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-labelledby="title desc">
+  <title id="title">Manoj Portfolio</title>
+  <desc id="desc">Orange Manoj signature above a black Portfolio wordmark with an orange underline.</desc>
+  <g fill="#ff7000">
+    <path d="M214 52c-28-25-83-31-111-5-15 14-9 30 10 32 23 2 50-19 59-39 14-31-6-50-35-38-28 12-40 49-31 76 10 31 48 43 78 29 25-12 37-35 34-58-3-25-21-45-45-51" fill="none" stroke="#ff7000" stroke-linecap="round" stroke-width="8"/>
+    <text x="184" y="111" font-family="cursive" font-size="87" font-weight="700" transform="rotate(-5 184 111)">Manoj</text>
+    <circle cx="391" cy="37" r="8"/>
+    <circle cx="102" cy="133" r="7"/>
+    <circle cx="630" cy="135" r="7"/>
+    <circle cx="675" cy="118" r="5"/>
+    <path d="M365 221c102-20 230-18 330 8" fill="none" stroke="#ff7000" stroke-linecap="round" stroke-width="8"/>
+  </g>
+  <text x="34" y="199" fill="#111" font-family="Arial, Helvetica, sans-serif" font-size="91" font-weight="900" letter-spacing="-5">PORTFOLIO</text>
+</svg>

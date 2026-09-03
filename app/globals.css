@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --page-bg: #eceae8;
-  --surface: #f4f3f1;
+  --page-bg: #ffffff;
+  --surface: #ffffff;
   --text: #161616;
   --muted: #5b5b5b;
   --orange: #f26b2d;
@@ -22,7 +22,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--page-bg);
+  background: #ffffff;
   color: var(--text);
   font-family: var(--font-outfit), sans-serif;
   overflow-x: hidden;
@@ -49,7 +49,7 @@ img {
 .portfolio-shell {
   width: min(1920px, calc(100% - 40px));
   margin: 0 auto;
-  background: var(--surface);
+  background: #ffffff;
   min-height: 100vh;
   padding: 38px clamp(28px, 6.5vw, 132px) 40px;
 }
@@ -907,7 +907,7 @@ img {
 }
 
 .community-footer {
-  padding: 44px 0 0;
+  padding: 74px 0 0;
 }
 
 .footer-divider {
@@ -931,7 +931,7 @@ img {
   font-family: var(--font-qwigley), cursive;
   font-size: clamp(2.4rem, 3vw, 3.4rem);
   line-height: 1;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .community-block h2 {
@@ -951,8 +951,8 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 26px;
-  margin-top: 32px;
+  gap: 34px;
+  margin-top: 58px;
 }
 
 .social-badge {
@@ -985,10 +985,9 @@ img {
 .footer-meta {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
-  padding: 18px 0 0;
+  padding:  0 0;
 }
 
 .footer-logo {
@@ -1000,10 +999,7 @@ img {
 .copyright {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
   gap: 20px;
-  text-align: center;
   color: var(--text);
   font-size: clamp(1rem, 1.25vw, 1.45rem);
   font-weight: 500;
@@ -1330,18 +1326,19 @@ img {
   }
 
   .community-footer {
-    padding-top: 36px;
+    padding-top: 52px;
   }
 
   .social-row {
     gap: 22px;
-    margin-top: 28px;
+    margin-top: 38px;
   }
 
   .footer-meta {
-    align-items: center;
-    gap: 14px;
-    padding-top: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-top: 38px;
   }
 
   .footer-logo {
@@ -1352,8 +1349,6 @@ img {
     flex-wrap: wrap;
     gap: 8px 14px;
     font-size: 0.95rem;
-    justify-content: center;
-    text-align: center;
   }
 }
 

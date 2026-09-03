@@ -41,7 +41,7 @@ export default function AboutMe() {
           </div>
         </div>
 
-        <div className="tagline">Think. Create. Communicate.</div>
+        <div className="works-script">Think. Create. Communicate.</div>
       </div>
       <div className="hero-visual" aria-hidden="true">
         <Image

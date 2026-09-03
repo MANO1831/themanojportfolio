@@ -1,4 +1,10 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a static-exported [Next.js](https://nextjs.org) portfolio configured for GitHub Pages.
+
+## GitHub Pages
+
+Enable **Settings > Pages > Build and deployment > Source: GitHub Actions** in the repository. The workflow in `.github/workflows/deploy-pages.yml` deploys the site after each push to `master`.
+
+The site will be available at `https://mano1831.github.io/themanojportfolio/`.
 
 ## Getting Started
 

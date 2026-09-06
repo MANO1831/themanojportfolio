@@ -31,7 +31,10 @@ export function CommunityFooter() {
       <div className="footer-divider" />
 
       <div className="footer-meta">
-        <Image className="footer-logo" src={logo} alt="Manoj Portfolio" width={1440} height={1024} />
+        <span className="footer-logo-wrap">
+          <Image className="footer-logo" src={logo} alt="Manoj Portfolio" width={1440} height={1024} />
+          <Image className="footer-logo-text-overlay" src={logo} alt="" width={1440} height={1024} />
+        </span>
 
         <div className="copyright">
           <span>® 2026 Mano&apos;s Portfolio</span>

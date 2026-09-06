@@ -62,7 +62,10 @@ export function Header() {
   return (
     <header className={`topbar${menuOpen ? " menu-open" : ""}`}>
       <a className="brand" href="#top" aria-label="Manoj portfolio home" onClick={() => setMenuOpen(false)}>
-        <Image src={logo} alt="Manoj Portfolio" width={360} height={130} priority />
+        <span className="brand-logo-wrap">
+          <Image className="brand-logo" src={logo} alt="Manoj Portfolio" width={360} height={130} priority />
+          <Image className="brand-logo-text-overlay" src={logo} alt="" width={360} height={130} priority />
+        </span>
       </a>
 
       <button

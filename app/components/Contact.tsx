@@ -4,10 +4,11 @@ const formFields = [
   { label: "Your Phone", placeholder: "Enter your phone number", type: "tel" },
   { label: "Project Type", placeholder: "Select a project type", type: "text" },
 ];
+import { Reveal } from "./Reveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="contact-section">
+    <Reveal id="contact" className="contact-section">
       <div className="contact-left-column">
         <div className="contact-copy">
           <span className="contact-script">Let&apos;s Connect</span>
@@ -49,6 +50,6 @@ export function Contact() {
           </button>
         </div>
       </div>
-    </section>
+    </Reveal>
   );
 }

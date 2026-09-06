@@ -1,11 +1,12 @@
 import Image from "next/image";
 import background from "@/src/assets/Background.png";
 import foreground from "@/src/assets/hero-portrait.png";
+import { Reveal } from "./Reveal";
 
 
 export function Hero() {
   return (
-    <section id="top" className="hero-section">
+    <Reveal id="top" className="hero-section" threshold={0.05}>
       <Image
         className="hero-background"
         src={background}
@@ -53,6 +54,6 @@ export function Hero() {
           <span>UI/UX DESIGNER</span>
         </strong>
       </div>
-    </section>
+    </Reveal>
   );
 }

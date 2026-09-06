@@ -1,4 +1,5 @@
 const filters = ["All", "UI/UX Design", "Branding", "Graphic Design", "Web Design"];
+import { Reveal } from "./Reveal";
 
 const projects = [
   {
@@ -61,7 +62,7 @@ const projects = [
 
 export function Works() {
   return (
-    <section id="works" className="works-section">
+    <Reveal id="works" className="works-section">
       <div className="works-header">
         <span className="works-script">My Recent Work</span>
         <h2 style={{ fontWeight: 400 }}>
@@ -96,6 +97,6 @@ export function Works() {
           </article>
         ))}
       </div>
-    </section>
+    </Reveal>
   );
 }

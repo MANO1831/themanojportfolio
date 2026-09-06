@@ -1,4 +1,5 @@
 import { Layout, Megaphone, Monitor, Palette, PenTool } from "lucide-react";
+import { Reveal } from "./Reveal";
 
 const services = [
   {
@@ -35,7 +36,7 @@ const services = [
 
 export function Expertise() {
   return (
-    <section id="expertise" className="expertise-section">
+    <Reveal id="expertise" className="expertise-section">
       <div className="expertise-header">
         <span className="works-script">What I Do</span>
         <div className="expertise-title-wrap">
@@ -58,6 +59,6 @@ export function Expertise() {
           </article>
         ))}
       </div>
-    </section>
+    </Reveal>
   );
 }

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import experienceBanner from "@/src/assets/image 3.png";
+import { Reveal } from "./Reveal";
 
 const roles = [
   {
@@ -27,7 +28,7 @@ const roles = [
 
 export function Experience() {
   return (
-    <section id="experience" className="experience-section">
+    <Reveal id="experience" className="experience-section">
       <div className="experience-header">
         <span className="experience-script">My Journey</span>
         <h2>Experience</h2>
@@ -60,6 +61,6 @@ export function Experience() {
           </article>
         ))}
       </div>
-    </section>
+    </Reveal>
   );
 }

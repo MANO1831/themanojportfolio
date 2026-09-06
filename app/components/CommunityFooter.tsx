@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Mail } from "lucide-react";
 import logo from "@/src/assets/manoj logo.png";
+import { Reveal } from "./Reveal";
 
 const socials = [
   { label: "Behance", icon: <span className="behance-icon">Be</span> },
@@ -11,7 +12,7 @@ const socials = [
 
 export function CommunityFooter() {
   return (
-    <footer className="community-footer">
+    <Reveal as="footer" className="community-footer" threshold={0.05}>
       <div className="community-block">
         <span className="community-script">Let&apos;s Join</span>
         <h2>
@@ -38,6 +39,6 @@ export function CommunityFooter() {
           All Rights Reserved.
         </div>
       </div>
-    </footer>
+    </Reveal>
   );
 }

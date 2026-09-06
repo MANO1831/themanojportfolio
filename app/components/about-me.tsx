@@ -1,9 +1,10 @@
 import Image from "next/image";
 import background from "@/src/assets/about-idea.png";
+import { Reveal } from "./Reveal";
 
 export default function AboutMe() {
   return (
-    <section className="about-section" id="about">
+    <Reveal className="about-section" id="about">
       <div className="about-copy">
         <h2>
           ABOUT <span>ME</span>
@@ -11,12 +12,6 @@ export default function AboutMe() {
 
         <p className="lead">
           I turn ideas into visuals that communicate.
-        </p>
-
-        <p>
-          I&apos;m Manoj M, a Visual Communication Designer with 1.5 years of
-          professional experience in creating meaningful visual identities,
-          digital experiences, branding materials, and marketing creatives.
         </p>
 
         <p>
@@ -53,6 +48,6 @@ export default function AboutMe() {
           priority
         />
       </div>
-    </section>
+    </Reveal>
   );
 }

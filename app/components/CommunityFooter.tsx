@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Mail } from "lucide-react";
 import logo from "@/src/assets/manoj logo.png";
+import darkLogo from "@/src/assets/manoj logo white.png";
 import { Reveal } from "./Reveal";
 
 const socials = [
@@ -32,8 +33,8 @@ export function CommunityFooter() {
 
       <div className="footer-meta">
         <span className="footer-logo-wrap">
-          <Image className="footer-logo" src={logo} alt="Manoj Portfolio" width={1440} height={1024} />
-          <Image className="footer-logo-text-overlay" src={logo} alt="" width={1440} height={1024} />
+          <Image className="footer-logo" src={darkLogo} alt="Manoj Portfolio" width={1440} height={1024} />
+          <Image className="footer-logo-text-overlay" src={darkLogo} alt="" width={1440} height={1024} />
         </span>
 
         <div className="copyright">

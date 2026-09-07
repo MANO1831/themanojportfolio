@@ -60,7 +60,7 @@ img {
 .portfolio-shell {
   width: min(1920px, calc(100% - 40px));
   margin: 0 auto;
-  background: var(--surface);
+  /* background: var(--surface); */
   min-height: 100vh;
   padding: 38px clamp(28px, 6.5vw, 132px) 40px;
 }
@@ -1480,8 +1480,9 @@ img {
   }
 
   .topbar {
-    align-items: stretch;
-    gap: 14px 16px;
+    align-items: center;
+    gap: 12px 16px;
+    grid-template-columns: 42px minmax(0, 1fr) 42px;
   }
 
   .nav {
@@ -1499,11 +1500,24 @@ img {
     min-width: 0;
   }
 
+  .brand {
+    grid-column: 2;
+    justify-self: center;
+    margin: 0 auto;
+  }
+
   .theme-toggle {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 1;
     width: 42px;
     height: 42px;
+    justify-self: start;
+  }
+
+  .menu-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
   }
 
   .hero-section {
@@ -1678,22 +1692,45 @@ img {
   .topbar {
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: 1px minmax(0, 1fr) 42px;
     align-items: center;
-    gap: 16px;
+    justify-items: center;
+    gap: 12px 12px;
+    min-height: 52px;
   }
 
   .brand {
-    grid-column: 1;
+    grid-column: 2;
     width: auto;
     flex: 0 1 auto;
-    justify-content: flex-start;
-    margin-right: auto;
+    justify-self: center;
+    margin: 0 auto;
     align-items: center;
+    min-width: 0;
+    text-align: center;
   }
 
   .brand img {
     width: min(210px, 72vw);
+    max-width: 100%;
+  }
+
+  .theme-toggle {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+  }
+
+  .menu-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    display: inline-flex;
+    justify-self: end;
+    flex: 0 0 46px;
+    margin: 0;
   }
 
   .hero-visual {

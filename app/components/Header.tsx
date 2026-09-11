@@ -141,12 +141,8 @@ export function Header() {
           <section className="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title">
             <div className="chat-header">
               <div className="chat-identity">
-                <span className="chat-avatar" aria-hidden="true">
-                  <Bot size={20} strokeWidth={1.8} />
-                </span>
                 <div>
-                  <h2 id="chat-title">Manoj AI</h2>
-                  <span className="chat-status"><span aria-hidden="true" /> Design assistant</span>
+                  <span className="chat-status"><span aria-hidden="true" /> Online</span>
                 </div>
               </div>
               <button className="chat-close" type="button" aria-label="Close chat" onClick={() => setChatOpen(false)}>
@@ -154,23 +150,44 @@ export function Header() {
               </button>
             </div>
 
-            <div className="chat-messages" aria-live="polite" aria-busy={isThinking}>
-              {messages.map((chatMessage) => (
-                <div key={chatMessage.id} className={`chat-message-row ${chatMessage.from}`}>
-                  <span className="chat-message-avatar" aria-hidden="true">
-                    {chatMessage.from === "ai" ? <Bot size={17} strokeWidth={1.8} /> : "You"}
-                  </span>
-                  <div className="chat-message-content">
-                    <span className="chat-message-author">{chatMessage.from === "ai" ? "Manoj AI" : "You"}</span>
-                    <p className="chat-message">{chatMessage.text}</p>
-                  </div>
+            {messages.length === 1 ? (
+              <div className="chat-welcome">
+                <div className="chat-orb" aria-hidden="true"><Bot size={38} strokeWidth={1.4} /></div>
+                <h2 id="chat-title">Hey, I&apos;m Manoj</h2>
+                <p>How can I assist you?</p>
+
+                <div className="chat-prompts chat-prompts-featured">
+                  {[
+                    ["✦", "Start a project", "Tell me about your design idea"],
+                    ["▤", "Explore my work", "See what I can create for you"],
+                    ["↗", "Get a direction", "Find the right creative approach"],
+                  ].map(([icon, title, description]) => (
+                    <button key={title} type="button" disabled={isThinking} onClick={() => sendMessage(description)}>
+                      <span className="chat-prompt-icon" aria-hidden="true">{icon}</span>
+                      <span><strong>{title}</strong><small>{description}</small></span>
+                    </button>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </div>
+            ) : (
+              <div className="chat-messages" aria-live="polite" aria-busy={isThinking}>
+                {messages.map((chatMessage) => (
+                  <div key={chatMessage.id} className={`chat-message-row ${chatMessage.from}`}>
+                    <span className="chat-message-avatar" aria-hidden="true">
+                      {chatMessage.from === "ai" ? <Bot size={17} strokeWidth={1.8} /> : "You"}
+                    </span>
+                    <div className="chat-message-content">
+                      <span className="chat-message-author">{chatMessage.from === "ai" ? "Manoj AI" : "You"}</span>
+                      <p className="chat-message">{chatMessage.text}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {isThinking ? <p className="chat-thinking"><span /> Manoj AI is thinking...</p> : null}
 
-            <div className="chat-prompts">
+            {messages.length > 1 ? <div className="chat-prompts chat-prompts-follow-up">
               {[
                 "I need a brand identity",
                 "Let's discuss a website",
@@ -180,7 +197,7 @@ export function Header() {
                   {prompt}
                 </button>
               ))}
-            </div>
+            </div> : null}
 
             <form className="chat-input-row" onSubmit={(event) => {
               event.preventDefault();

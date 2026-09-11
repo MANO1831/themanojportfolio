@@ -1,5 +1,10 @@
 "use client";
 
+import Image from "next/image";
+import { useState } from "react";
+import { Reveal } from "./Reveal";
+import experienceBanner from "@/src/assets/experience-bg.jpg";
+
 const formFields = [
   { label: "Your Name", placeholder: "Enter your name", type: "text" },
   { label: "Your Email", placeholder: "Enter your email address", type: "email" },
@@ -7,8 +12,6 @@ const formFields = [
   { label: "Project Type", placeholder: "Select a project type", type: "text" },
 ];
 
-import { useState } from "react";
-import { Reveal } from "./Reveal";
 
 const recipientEmail = "manomano1831@gmail.com";
 const formSubmitEndpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
@@ -75,7 +78,15 @@ export function Contact() {
 
         <div className="contact-visual-wrap">
           <div className="contact-visual" aria-hidden="true">
-            <div className="contact-visual-inner" />
+            <div className="experience-scene">
+              <Image
+                src={experienceBanner}
+                alt=""
+                fill
+                priority
+                className="experience-banner-image"
+              />
+            </div>
           </div>
         </div>
       </div>

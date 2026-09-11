@@ -34,16 +34,22 @@
   grid-row: 1;
 }
 
-@container (max-width: 768px) {
+@media (max-width: 768px) {
   .topbar {
     display: grid;
     grid-template-columns: 42px minmax(0, 1fr) 46px;
     gap: 12px;
     min-height: 52px;
-    padding: 0;
+    padding: 0 clamp(16px, 6vw, 50px);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: color-mix(in srgb, var(--page-bg) 90%, transparent);
+    backdrop-filter: blur(12px);
   }
 
   .topbar > .nav {
+    display: none;
     grid-column: 1 / -1;
     grid-row: 2;
     position: static;
@@ -59,25 +65,50 @@
     width: auto;
   }
 
+  .topbar > .brand img,
+  .topbar > .brand .brand-logo-wrap {
+    width: 160px;
+    max-width: 100%;
+  }
+
   .topbar > .theme-toggle {
-    grid-column: 1;
+    grid-column: 3;
     grid-row: 1;
-    justify-self: start;
+    justify-self: end;
     width: 42px;
     height: 42px;
   }
 
   .topbar > .menu-toggle {
-    grid-column: 3;
+    grid-column: 1;
     grid-row: 1;
     display: inline-flex;
-    justify-self: end;
+    justify-self: start;
   }
 
   .topbar > .talk-btn {
+    display: none;
     grid-column: 1 / -1;
     grid-row: 3;
     width: 100%;
+  }
+
+  .topbar.menu-open > .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding-top: 8px;
+    border-top: 1px solid rgba(17, 17, 17, 0.12);
+  }
+
+  .topbar.menu-open > .nav .nav-item {
+    padding: 11px 8px;
+    text-align: center;
+  }
+
+  .topbar.menu-open > .talk-btn {
+    display: inline-flex;
   }
 }
 
@@ -90,7 +121,20 @@
 
 @media (max-width: 768px) {
   .topbar {
-    padding-right: 0;
-    padding-left: 0;
+    padding-right: clamp(16px, 6vw, 50px);
+    padding-left: clamp(16px, 6vw, 50px);
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar {
+    padding-right: clamp(12px, 6vw, 32px);
+    padding-left: clamp(12px, 6vw, 32px);
+  }
+
+  .topbar > .brand img,
+  .topbar > .brand .brand-logo-wrap {
+    width: 145px;
+    max-width: 100%;
   }
 }

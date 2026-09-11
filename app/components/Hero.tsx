@@ -28,7 +28,7 @@ export function Hero() {
         </p>
 
         <div className="cta-row">
-          <a className="primary-btn" href="#contact">
+          <a className="primary-btn" href="resume.pdf" download="Manoj-M-Resume.pdf">
             Hire Me
           </a>
           <a className="secondary-btn" href="#works">

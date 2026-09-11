@@ -5,10 +5,18 @@ import darkLogo from "@/src/assets/manoj logo white.png";
 import { Reveal } from "./Reveal";
 
 const socials = [
-  { label: "Behance", icon: <span className="behance-icon">Be</span> },
-  { label: "Mail", icon: <Mail aria-hidden="true" size={20} strokeWidth={1.8} /> },
-  { label: "LinkedIn", icon: <span className="linkedin-icon">in</span> },
-  { label: "Instagram", icon: <span className="instagram-icon">ig</span> },
+  { label: "Behance",
+    href: "https://www.behance.net/manomano27",
+    icon: <span className="behance-icon">Be</span> },
+  { label: "Mail",
+    href: "mailto:manomano1831@gmail.com",
+    icon: <Mail aria-hidden="true" size={20} strokeWidth={1.8} /> },
+  { label: "LinkedIn", 
+    href: "https://www.linkedin.com/in/manoj-m-b5b27b228/",
+    icon: <span className="linkedin-icon">in</span> },
+  { label: "Instagram",
+    href: "https://www.instagram.com/sundara_kuttan08/?hl=en",
+    icon: <span className="instagram-icon" aria-hidden="true" /> },
 ];
 
 export function CommunityFooter() {
@@ -22,7 +30,14 @@ export function CommunityFooter() {
 
         <div className="social-row" aria-label="Social media links">
           {socials.map((social) => (
-            <a href="#" key={social.label} className="social-badge" aria-label={social.label}>
+            <a
+              href={social.href}
+              key={social.label}
+              className="social-badge"
+              aria-label={social.label}
+              target={social.href.startsWith("http") ? "_blank" : undefined}
+              rel={social.href.startsWith("http") ? "noreferrer" : undefined}
+            >
               {social.icon}
             </a>
           ))}

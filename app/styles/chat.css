@@ -1,0 +1,9 @@
+.chat-panel {
+  container-type: inline-size;
+}
+
+@container (max-width: 520px) {
+  .chat-message-content {
+    max-width: 78%;
+  }
+}

@@ -1,0 +1,32 @@
+.about-section {
+  container-type: inline-size;
+}
+
+.about-copy {
+  text-wrap: pretty;
+}
+
+.drive-block {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.drive-block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 30px 64px rgba(0, 0, 0, 0.16);
+}
+
+@container (max-width: 760px) {
+  .about-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drive-block {
+    transition: none;
+  }
+
+  .drive-block:hover {
+    transform: none;
+  }
+}

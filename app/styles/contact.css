@@ -1,0 +1,55 @@
+.contact-section {
+  container-type: inline-size;
+}
+
+.contact-form-panel,
+.contact-visual {
+  container-type: inline-size;
+}
+
+.contact-visual,
+.contact-form-panel {
+  transition: transform 220ms ease, box-shadow 220ms ease;
+}
+
+.contact-visual:hover,
+.contact-form-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 34px rgba(17, 17, 17, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@container (max-width: 760px) {
+  .contact-section {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form-panel {
+    grid-column: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-visual,
+  .contact-form-panel {
+    transition: none;
+  }
+
+  .contact-visual:hover,
+  .contact-form-panel:hover {
+    transform: none;
+  }
+}
+
+.form-status {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.form-status.success {
+  color: #22845a;
+}
+
+.form-status.error {
+  color: #c43d2f;
+}

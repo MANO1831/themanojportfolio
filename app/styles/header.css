@@ -1,0 +1,96 @@
+.topbar {
+  container-type: inline-size;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(220px, 285px) minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: clamp(20px, 3vw, 56px);
+  min-height: 76px;
+  padding: 0 200px 4px;
+}
+
+.topbar > .nav {
+  grid-column: 2;
+  grid-row: 1;
+  position: static;
+  width: auto;
+  max-width: none;
+  transform: none;
+  justify-self: center;
+}
+
+.topbar > .brand {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.topbar > .theme-toggle {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.topbar > .talk-btn {
+  grid-column: 4;
+  grid-row: 1;
+}
+
+@container (max-width: 768px) {
+  .topbar {
+    display: grid;
+    grid-template-columns: 42px minmax(0, 1fr) 46px;
+    gap: 12px;
+    min-height: 52px;
+    padding: 0;
+  }
+
+  .topbar > .nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    position: static;
+    width: 100%;
+    max-width: none;
+    transform: none;
+  }
+
+  .topbar > .brand {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    width: auto;
+  }
+
+  .topbar > .theme-toggle {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    width: 42px;
+    height: 42px;
+  }
+
+  .topbar > .menu-toggle {
+    grid-column: 3;
+    grid-row: 1;
+    display: inline-flex;
+    justify-self: end;
+  }
+
+  .topbar > .talk-btn {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .topbar {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

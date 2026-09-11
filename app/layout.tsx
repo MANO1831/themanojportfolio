@@ -1,6 +1,15 @@
 import type { Metadata } from "next";
 import { Outfit, Qwigley } from "next/font/google";
-import "./globals.css";
+import "./styles/base.css";
+import "./styles/header.css";
+import "./styles/hero.css";
+import "./styles/about.css";
+import "./styles/expertise.css";
+import "./styles/experience.css";
+import "./styles/works.css";
+import "./styles/contact.css";
+import "./styles/footer.css";
+import "./styles/chat.css";
 
 const outfit = Outfit({
   variable: "--font-outfit",

@@ -21,6 +21,9 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### AI chat
+
+For live AI replies, create a `.env.local` file with `OPENAI_API_KEY=your-key`. You can optionally set `OPENAI_MODEL=gpt-4o-mini`. The key is read only by the server route and is never exposed to the browser. GitHub Pages remains a static export, so deploy this app with a server runtime such as Vercel to enable the AI route in production.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

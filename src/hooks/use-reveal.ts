@@ -15,6 +15,18 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(threshold = 0.
       setShown(true);
       return;
     }
+
+    const revealIfAlreadyVisible = () => {
+      const { top, bottom } = el.getBoundingClientRect();
+      if (top < window.innerHeight * 0.92 && bottom > 0) {
+        setShown(true);
+        return true;
+      }
+      return false;
+    };
+
+    if (revealIfAlreadyVisible()) return;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -24,7 +36,7 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(threshold = 0.
           }
         });
       },
-      { threshold, rootMargin: "0px 0px -60px 0px" },
+      { threshold: Math.min(threshold, 0.08), rootMargin: "0px 0px -24px 0px" },
     );
     observer.observe(el);
     return () => observer.disconnect();

@@ -9,8 +9,10 @@ import { Expertise } from "./components/Expertise";
 
 export default function Home() {
   return (
+    <>
+     <Header />
     <div className="portfolio-shell">
-      <Header />
+   
       <main className="page-content">
         <Hero />
         <AboutMe />
@@ -20,7 +22,9 @@ export default function Home() {
         <Works />
         <Contact />
       </main>
-      <CommunityFooter />
+   
     </div>
-  );
+       <CommunityFooter />
+         </>
+  );  
 }

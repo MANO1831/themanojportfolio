@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Menu, MessageCircle, Moon, Send, Sun, X } from "lucide-react";
+import { Bot, Menu, MessageCircle, Moon, Send, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "@/src/assets/manoj logo.png";
 import darkLogo from "@/src/assets/manoj logo white.png";
@@ -13,11 +13,13 @@ const navItems = [
   { label: "Contact", href: "#contact" },
 ];
 export function Header() {
+  type ChatMessage = { id: number; from: "ai" | "user"; text: string };
   const [menuOpen, setMenuOpen] = useState(false);
   const [darkMode, setDarkMode] = useState(false);
   const [chatOpen, setChatOpen] = useState(false);
   const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([
+  const [isThinking, setIsThinking] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: 1,
       from: "ai",
@@ -44,20 +46,49 @@ export function Header() {
     setChatOpen(true);
   };
 
-  const sendMessage = (text = message) => {
+  const sendMessage = async (text = message) => {
     const trimmedMessage = text.trim();
-    if (!trimmedMessage) return;
+    if (!trimmedMessage || isThinking) return;
 
-    setMessages((currentMessages) => [
-      ...currentMessages,
-      { id: Date.now(), from: "user", text: trimmedMessage },
-      {
-        id: Date.now() + 1,
-        from: "ai",
-        text: "That sounds interesting. Share a little more about your goals, timeline, or budget, and Manoj can shape the best creative direction for you.",
-      },
-    ]);
+    const userMessage: ChatMessage = { id: Date.now(), from: "user", text: trimmedMessage };
+    const conversation = [...messages, userMessage];
+    setMessages(conversation);
     setMessage("");
+    setIsThinking(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: conversation.map(({ from, text: content }) => ({
+            role: from === "ai" ? "assistant" : "user",
+            content,
+          })),
+        }),
+      });
+      const result = await response.json();
+
+      if (!response.ok) throw new Error(result.error || "The AI assistant is unavailable.");
+
+      setMessages((currentMessages) => [
+        ...currentMessages,
+        { id: Date.now() + 1, from: "ai", text: result.message },
+      ]);
+    } catch (error) {
+      setMessages((currentMessages) => [
+        ...currentMessages,
+        {
+          id: Date.now() + 1,
+          from: "ai",
+          text: error instanceof Error
+            ? `${error.message} You can also reach Manoj through the contact form below.`
+            : "The AI assistant is unavailable right now. You can reach Manoj through the contact form below.",
+        },
+      ]);
+    } finally {
+      setIsThinking(false);
+    }
   };
 
   return (
@@ -109,22 +140,35 @@ export function Header() {
         }}>
           <section className="chat-panel" role="dialog" aria-modal="true" aria-labelledby="chat-title">
             <div className="chat-header">
-              <div>
-                <span className="chat-status">ONLINE NOW</span>
-                <h2 id="chat-title">Let&apos;s make something meaningful.</h2>
+              <div className="chat-identity">
+                <span className="chat-avatar" aria-hidden="true">
+                  <Bot size={20} strokeWidth={1.8} />
+                </span>
+                <div>
+                  <h2 id="chat-title">Manoj AI</h2>
+                  <span className="chat-status"><span aria-hidden="true" /> Design assistant</span>
+                </div>
               </div>
               <button className="chat-close" type="button" aria-label="Close chat" onClick={() => setChatOpen(false)}>
                 <X aria-hidden="true" size={22} />
               </button>
             </div>
 
-            <div className="chat-messages" aria-live="polite">
+            <div className="chat-messages" aria-live="polite" aria-busy={isThinking}>
               {messages.map((chatMessage) => (
-                <div key={chatMessage.id} className={`chat-message ${chatMessage.from}`}>
-                  {chatMessage.text}
+                <div key={chatMessage.id} className={`chat-message-row ${chatMessage.from}`}>
+                  <span className="chat-message-avatar" aria-hidden="true">
+                    {chatMessage.from === "ai" ? <Bot size={17} strokeWidth={1.8} /> : "You"}
+                  </span>
+                  <div className="chat-message-content">
+                    <span className="chat-message-author">{chatMessage.from === "ai" ? "Manoj AI" : "You"}</span>
+                    <p className="chat-message">{chatMessage.text}</p>
+                  </div>
                 </div>
               ))}
             </div>
+
+            {isThinking ? <p className="chat-thinking"><span /> Manoj AI is thinking...</p> : null}
 
             <div className="chat-prompts">
               {[
@@ -132,7 +176,7 @@ export function Header() {
                 "Let's discuss a website",
                 "I have a project idea",
               ].map((prompt) => (
-                <button key={prompt} type="button" onClick={() => sendMessage(prompt)}>
+                <button key={prompt} type="button" disabled={isThinking} onClick={() => sendMessage(prompt)}>
                   {prompt}
                 </button>
               ))}
@@ -142,16 +186,20 @@ export function Header() {
               event.preventDefault();
               sendMessage();
             }}>
-              <input
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
-                placeholder="Type your project idea..."
-                aria-label="Chat message"
-              />
-              <button type="submit" aria-label="Send message">
-                <Send aria-hidden="true" size={19} />
+              <div className="chat-input-shell">
+                <input
+                  value={message}
+                  onChange={(event) => setMessage(event.target.value)}
+                  placeholder="Message Manoj AI"
+                  aria-label="Chat message"
+                />
+                <span className="chat-input-hint">Enter to send</span>
+              </div>
+              <button type="submit" aria-label="Send message" disabled={isThinking || !message.trim()}>
+                <Send aria-hidden="true" size={18} strokeWidth={2.2} />
               </button>
             </form>
+            <p className="chat-disclaimer">Manoj AI can make mistakes. Check important information.</p>
           </section>
         </div>
       ) : null}

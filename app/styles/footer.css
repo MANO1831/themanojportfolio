@@ -1,0 +1,53 @@
+.community-footer {
+  container-type: inline-size;
+}
+
+.footer-meta {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+@container (max-width: 600px) {
+  .footer-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .footer-logo {
+    width: min(310px, 78%);
+  }
+}
+
+.community-block,
+.footer-meta {
+  transition: transform 220ms ease;
+}
+
+.community-block:hover {
+  transform: translateY(-3px);
+}
+
+.social-badge {
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.social-badge:hover,
+.social-badge:focus-visible {
+  transform: translateY(-4px) scale(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .community-block,
+  .footer-meta,
+  .social-badge {
+    transition: none;
+  }
+
+  .community-block:hover,
+  .social-badge:hover,
+  .social-badge:focus-visible {
+    transform: none;
+  }
+}

@@ -1,12 +1,19 @@
 .topbar {
   container-type: inline-size;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 40;
   display: grid;
   grid-template-columns: minmax(220px, 285px) minmax(0, 1fr) auto auto;
   align-items: center;
   gap: clamp(20px, 3vw, 56px);
+  width: 100%;
+  max-width: 100%;
   min-height: 76px;
   padding: 0 200px 4px;
+  background: color-mix(in srgb, var(--page-bg) 92%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
 }
 
 .topbar > .nav {
@@ -37,25 +44,18 @@
 @media (max-width: 768px) {
   .topbar {
     display: grid;
-    grid-template-columns: 42px minmax(0, 1fr) 46px;
+    grid-template-columns: 46px minmax(0, 1fr) 46px;
     gap: 12px;
     min-height: 52px;
     padding: 0 clamp(16px, 6vw, 50px);
     position: sticky;
     top: 0;
-    z-index: 10;
-    background: color-mix(in srgb, var(--page-bg) 90%, transparent);
-    backdrop-filter: blur(12px);
-  }
-
-  .topbar > .nav {
-    display: none;
-    grid-column: 1 / -1;
-    grid-row: 2;
-    position: static;
+    z-index: 40;
     width: 100%;
-    max-width: none;
-    transform: none;
+    max-width: 100%;
+    overflow: visible;
+    background: color-mix(in srgb, var(--page-bg) 92%, transparent);
+    backdrop-filter: blur(12px);
   }
 
   .topbar > .brand {
@@ -71,6 +71,13 @@
     max-width: 100%;
   }
 
+  .topbar > .menu-toggle {
+    grid-column: 1;
+    grid-row: 1;
+    display: inline-flex;
+    justify-self: start;
+  }
+
   .topbar > .theme-toggle {
     grid-column: 3;
     grid-row: 1;
@@ -79,36 +86,39 @@
     height: 42px;
   }
 
-  .topbar > .menu-toggle {
-    grid-column: 1;
-    grid-row: 1;
-    display: inline-flex;
-    justify-self: start;
+  .topbar > .nav {
+    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    position: static;
+    width: 100%;
+    max-width: none;
+    transform: none;
   }
 
   .topbar > .talk-btn {
     display: none;
-    grid-column: 1 / -1;
-    grid-row: 3;
-    width: 100%;
   }
 
   .topbar.menu-open > .nav {
     display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: calc(100% + 2px);
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding-top: 8px;
+    padding: 8px 16px 12px;
+    background: color-mix(in srgb, var(--page-bg) 96%, transparent);
     border-top: 1px solid rgba(17, 17, 17, 0.12);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
   }
 
   .topbar.menu-open > .nav .nav-item {
     padding: 11px 8px;
     text-align: center;
-  }
-
-  .topbar.menu-open > .talk-btn {
-    display: inline-flex;
   }
 }
 

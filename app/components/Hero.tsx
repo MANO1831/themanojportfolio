@@ -1,8 +1,15 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 import background from "@/src/assets/Background.png";
 import foreground from "@/src/assets/hero-portrait.png";
 import { Reveal } from "./Reveal";
 
+const heroTransition = {
+  duration: 0.7,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
 
 export function Hero() {
   return (
@@ -16,7 +23,12 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="hero-copy">
+      <motion.div
+        className="hero-copy"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ ...heroTransition, delay: 0.05 }}
+      >
         <span className="eyebrow">Hai I&apos;m</span>
         <h1>
           Manoj M
@@ -35,9 +47,15 @@ export function Hero() {
             See My Work
           </a>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="hero-visual" aria-hidden="true">
+      <motion.div
+        className="hero-visual"
+        aria-hidden="true"
+        initial={{ opacity: 0, scale: 0.96, y: 18 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ ...heroTransition, delay: 0.18 }}
+      >
         <Image
           className="hero-foreground"
           src={foreground}
@@ -46,14 +64,19 @@ export function Hero() {
           height={1024}
           priority
         />
-      </div>
+      </motion.div>
 
-      <div className="hero-title">
+      <motion.div
+        className="hero-title"
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ ...heroTransition, delay: 0.25 }}
+      >
         <span>GRAPHIC &amp;</span>
         <strong>
           <span>UI/UX DESIGNER</span>
         </strong>
-      </div>
+      </motion.div>
     </Reveal>
   );
 }

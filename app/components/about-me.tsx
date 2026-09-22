@@ -1,11 +1,25 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 import background from "@/src/assets/about-idea.png";
 import { Reveal } from "./Reveal";
+
+const revealTransition = {
+  duration: 0.7,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
 
 export default function AboutMe() {
   return (
     <Reveal className="about-section" id="about">
-      <div className="about-copy">
+      <motion.div
+        className="about-copy"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ ...revealTransition }}
+      >
         <h2>
           ABOUT <span>ME</span>
         </h2>
@@ -37,8 +51,15 @@ export default function AboutMe() {
         </div>
 
         <div className="works-script">Think. Create. Communicate.</div>
-      </div>
-      <div className="hero-visual" aria-hidden="true">
+      </motion.div>
+      <motion.div
+        className="hero-visual"
+        aria-hidden="true"
+        initial={{ opacity: 0, scale: 0.96, x: 24 }}
+        whileInView={{ opacity: 1, scale: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.25 }}
+        transition={{ ...revealTransition, delay: 0.1 }}
+      >
         <Image
           className="hero-foreground"
           src={background}
@@ -47,7 +68,7 @@ export default function AboutMe() {
           height={1024}
           priority
         />
-      </div>
+      </motion.div>
     </Reveal>
   );
 }

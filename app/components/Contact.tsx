@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { Reveal } from "./Reveal";
 import experienceBanner from "@/src/assets/experience-bg.jpg";
@@ -12,9 +13,12 @@ const formFields = [
   { label: "Project Type", placeholder: "Select a project type", type: "text" },
 ];
 
-
 const recipientEmail = "manomano1831@gmail.com";
 const formSubmitEndpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
+const revealTransition = {
+  duration: 0.7,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -63,7 +67,13 @@ export function Contact() {
 
   return (
     <Reveal id="contact" className="contact-section">
-      <div className="contact-left-column">
+      <motion.div
+        className="contact-left-column"
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ ...revealTransition }}
+      >
         <div className="contact-copy">
           <span className="contact-script">Let&apos;s Connect</span>
           <h2>
@@ -89,9 +99,15 @@ export function Contact() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      <div className="contact-form-panel">
+      <motion.div
+        className="contact-form-panel"
+        initial={{ opacity: 0, x: 20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ ...revealTransition, delay: 0.08 }}
+      >
         <h3>Send Me a Message</h3>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -121,13 +137,19 @@ export function Contact() {
             />
           </div>
 
-          <button type="submit" className="submit-btn" disabled={submitState === "sending"}>
+          <motion.button
+            type="submit"
+            className="submit-btn"
+            disabled={submitState === "sending"}
+            whileHover={{ y: -2, scale: 1.01 }}
+            whileTap={{ scale: 0.98 }}
+          >
             {submitState === "sending" ? "Sending..." : "Send Message"} <span aria-hidden="true">→</span>
-          </button>
+          </motion.button>
           {submitState === "success" ? <p className="form-status success" role="status">Thanks. Your message was sent successfully.</p> : null}
           {submitState === "error" ? <p className="form-status error" role="alert">The message could not be sent. Please try again or email {recipientEmail} directly.</p> : null}
         </form>
-      </div>
+      </motion.div>
     </Reveal>
   );
 }

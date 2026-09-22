@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "motion/react";
 import { Layout, Megaphone, Monitor, Palette, PenTool } from "lucide-react";
 import { Reveal } from "./Reveal";
 
@@ -34,29 +37,45 @@ const services = [
   },
 ];
 
+const revealTransition = {
+  duration: 0.7,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
+
 export function Expertise() {
   return (
     <Reveal id="expertise" className="expertise-section">
-      <div className="expertise-header">
+      <motion.div
+        className="expertise-header"
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ ...revealTransition }}
+      >
         <span className="works-script">What I Do</span>
         <div className="expertise-title-wrap">
           <h3 className="expertise-title">My Expertise</h3>
-          {/* <div className="expertise-watermark" aria-hidden="true">
-            EXPERTISE
-          </div> */}
         </div>
-      </div>
+      </motion.div>
 
       <div className="expertise-grid">
-        {services.map((service) => (
-          <article key={service.title} className="service-card">
+        {services.map((service, index) => (
+          <motion.article
+            key={service.title}
+            className="service-card"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ ...revealTransition, delay: index * 0.08 }}
+            whileHover={{ y: -8, scale: 1.01 }}
+          >
             <div className="service-icon" aria-hidden="true">
               {service.icon}
             </div>
             <h3>{service.title}</h3>
             <span className="service-accent" aria-hidden="true" />
             <p>{service.description}</p>
-          </article>
+          </motion.article>
         ))}
       </div>
     </Reveal>

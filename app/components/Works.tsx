@@ -1,5 +1,9 @@
-const filters = ["All", "UI/UX Design", "Branding", "Graphic Design", "Web Design"];
+"use client";
+
+import { motion } from "motion/react";
 import { Reveal } from "./Reveal";
+
+const filters = ["All", "UI/UX Design", "Branding", "Graphic Design", "Web Design"];
 
 const projects = [
   {
@@ -88,29 +92,55 @@ const projects = [
   },
 ];
 
+const revealTransition = {
+  duration: 0.7,
+  ease: [0.22, 1, 0.36, 1] as const,
+};
+
 export function Works() {
   return (
     <Reveal id="works" className="works-section">
-      <div className="works-header">
+      <motion.div
+        className="works-header"
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ ...revealTransition }}
+      >
         <span className="works-script">My Recent Work</span>
         <h2 style={{ fontWeight: 400 }}>
           Creative Designs.
           <br />
           Meaningful Experiences.
         </h2>
-      </div>
+      </motion.div>
 
-      <div className="works-filters" aria-label="Project filters">
+      <motion.div
+        className="works-filters"
+        aria-label="Project filters"
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.4 }}
+        transition={{ ...revealTransition, delay: 0.08 }}
+      >
         {filters.map((filter, index) => (
           <button key={filter} className={index === 0 ? "filter-button active" : "filter-button"} type="button">
             {filter}
           </button>
         ))}
-      </div>
+      </motion.div>
 
       <div className="works-grid">
-        {projects.map((project) => (
-          <article key={project.id} className="work-card">
+        {projects.map((project, index) => (
+          <motion.article
+            key={project.id}
+            className="work-card"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ ...revealTransition, delay: index * 0.07 }}
+            whileHover={{ y: -8, scale: 1.01 }}
+          >
             <div className="work-image-wrap">
               <img src={project.image} alt={project.title} className="work-image" />
             </div>
@@ -122,7 +152,7 @@ export function Works() {
                 View Project
               </a>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
     </Reveal>

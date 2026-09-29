@@ -1,6 +1,7 @@
 :root {
-  --bg-color: #f7f7f7;
-  --text-color: #1a1a1a;
+  --bg-color: #000000;
+  --text-color: #ffffff
+;
   --primary-color: #ff5722;
   --panel-color: #dddddd;
   --panel-radius: 0.75rem;
@@ -154,10 +155,6 @@
 }
 
 .projects-dialog {
-  position: fixed;
-  inset: 50% auto auto 50%;
-  transform: translate(-50%, -50%);
-  margin: 0;
   width: min(68rem, calc(100vw - 2rem));
   max-width: none;
   max-height: min(88svh, 54rem);

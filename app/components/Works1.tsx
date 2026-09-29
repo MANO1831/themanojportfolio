@@ -112,7 +112,9 @@ export default function PortfolioPage() {
     <main className={`portfolio-page ${outfit.variable} ${caveat.variable}`}>
       <section className="portfolio-section" aria-labelledby="recent-work-title">
         <header className="portfolio-heading">
-          <p className="portfolio-kicker">My Recent Work</p>
+          {/* <p className="portfolio-kicker">My Recent Work</p> */}
+          <span className="works-script">My Recent Work</span>
+
           <h1 id="recent-work-title">
             Creative Designs.
             <span>Meaningful Experiences.</span>

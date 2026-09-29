@@ -2,7 +2,6 @@
   container-type: inline-size;
 }
 
-.topbar > .theme-toggle,
 .topbar > .menu-toggle {
   display: none;
 }
@@ -31,7 +30,7 @@
 
   .topbar > .brand img,
   .topbar > .brand .brand-logo-wrap {
-    width: min(260px, 62vw);
+    width: min(200px, 50vw);
     max-width: 100%;
   }
 
@@ -97,6 +96,6 @@
 
   .topbar > .brand img,
   .topbar > .brand .brand-logo-wrap {
-    width: min(240px, calc(100vw - 118px));
+    width: min(170px, calc(100vw - 126px));
   }
 }

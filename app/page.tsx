@@ -6,6 +6,7 @@ import { Works } from "./components/Works";
 import { Contact } from "./components/Contact";
 import { CommunityFooter } from "./components/CommunityFooter";
 import { Expertise } from "./components/Expertise";
+import Works1 from "./components/Works1";
 
 export default function Home() {
   return (
@@ -18,8 +19,9 @@ export default function Home() {
         <AboutMe />
         <Expertise 
         />
-        <Experience />
-        <Works />
+        <Experience /> 
+        <Works1/>
+        {/* <Works /> */}
         <Contact />
       </main>
    

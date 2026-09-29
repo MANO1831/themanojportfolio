@@ -1,61 +1,25 @@
 .topbar {
   container-type: inline-size;
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  display: grid;
-  grid-template-columns: minmax(220px, 285px) minmax(0, 1fr) auto auto;
-  align-items: center;
-  gap: clamp(20px, 3vw, 56px);
-  width: 100%;
-  max-width: 100%;
-  min-height: 76px;
-  padding: 0 200px 4px;
-  background: color-mix(in srgb, var(--page-bg) 92%, transparent);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(17, 17, 17, 0.08);
 }
 
-.topbar > .nav {
-  grid-column: 2;
-  grid-row: 1;
-  position: static;
-  width: auto;
-  max-width: none;
-  transform: none;
-  justify-self: center;
+.topbar > .theme-toggle,
+.topbar > .menu-toggle {
+  display: none;
 }
 
-.topbar > .brand {
-  grid-column: 1;
-  grid-row: 1;
+:root[data-theme="dark"] .topbar.menu-open > .nav {
+  background: rgba(27, 27, 27, 0.96);
+  border-color: rgba(255, 255, 255, 0.12);
 }
 
-.topbar > .theme-toggle {
-  grid-column: 3;
-  grid-row: 1;
-}
-
-.topbar > .talk-btn {
-  grid-column: 4;
-  grid-row: 1;
-}
-
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .topbar {
     display: grid;
     grid-template-columns: 46px minmax(0, 1fr) 46px;
     gap: 12px;
-    min-height: 52px;
-    padding: 0 clamp(16px, 6vw, 50px);
-    position: sticky;
-    top: 0;
-    z-index: 40;
-    width: 100%;
-    max-width: 100%;
-    overflow: visible;
-    background: color-mix(in srgb, var(--page-bg) 92%, transparent);
-    backdrop-filter: blur(12px);
+    min-height: 68px;
+    padding: 8px 14px;
+    border-radius: 28px;
   }
 
   .topbar > .brand {
@@ -67,7 +31,7 @@
 
   .topbar > .brand img,
   .topbar > .brand .brand-logo-wrap {
-    width: 160px;
+    width: min(230px, 62vw);
     max-width: 100%;
   }
 
@@ -81,6 +45,7 @@
   .topbar > .theme-toggle {
     grid-column: 3;
     grid-row: 1;
+    display: inline-flex;
     justify-self: end;
     width: 42px;
     height: 42px;
@@ -90,7 +55,6 @@
     display: none;
     grid-column: 1 / -1;
     grid-row: 2;
-    position: static;
     width: 100%;
     max-width: none;
     transform: none;
@@ -105,46 +69,32 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: calc(100% + 2px);
+    top: calc(100% + 8px);
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 8px 16px 12px;
-    background: color-mix(in srgb, var(--page-bg) 96%, transparent);
-    border-top: 1px solid rgba(17, 17, 17, 0.12);
+    padding: 10px 18px 14px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 24px;
+    border: 1px solid rgba(17, 17, 17, 0.08);
     box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
   }
 
   .topbar.menu-open > .nav .nav-item {
-    padding: 11px 8px;
+    padding: 12px 8px;
     text-align: center;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 540px) {
   .topbar {
-    padding-right: 40px;
-    padding-left: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .topbar {
-    padding-right: clamp(16px, 6vw, 50px);
-    padding-left: clamp(16px, 6vw, 50px);
-  }
-}
-
-@media (max-width: 420px) {
-  .topbar {
-    padding-right: clamp(12px, 6vw, 32px);
-    padding-left: clamp(12px, 6vw, 32px);
+    min-height: 62px;
+    padding: 6px 12px;
   }
 
   .topbar > .brand img,
   .topbar > .brand .brand-logo-wrap {
-    width: 145px;
-    max-width: 100%;
+    width: min(190px, 58vw);
   }
 }

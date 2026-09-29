@@ -12,20 +12,9 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(threshold = 0.
     const el = ref.current;
     if (!el) return;
     if (typeof IntersectionObserver === "undefined") {
-      setShown(true);
-      return;
+      const frame = window.requestAnimationFrame(() => setShown(true));
+      return () => window.cancelAnimationFrame(frame);
     }
-
-    const revealIfAlreadyVisible = () => {
-      const { top, bottom } = el.getBoundingClientRect();
-      if (top < window.innerHeight * 0.92 && bottom > 0) {
-        setShown(true);
-        return true;
-      }
-      return false;
-    };
-
-    if (revealIfAlreadyVisible()) return;
 
     const observer = new IntersectionObserver(
       (entries) => {

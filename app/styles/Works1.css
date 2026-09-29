@@ -1,0 +1,361 @@
+:root {
+  --bg-color: #f7f7f7;
+  --text-color: #1a1a1a;
+  --primary-color: #ff5722;
+  --panel-color: #dddddd;
+  --panel-radius: 0.75rem;
+}
+
+.portfolio-page {
+  width: 100vw;
+  margin-inline: calc(50% - 50vw);
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-sans), sans-serif;
+}
+
+.portfolio-section {
+  width: min(100%, 94rem);
+  min-height: 100svh;
+  padding: clamp(4.5rem, 15vh, 11rem) clamp(1.25rem, 5vw, 5rem) 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-heading {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.portfolio-kicker {
+  margin: 0 0 0.3rem;
+  color: var(--primary-color);
+  font-family: var(--font-script), cursive;
+  font-size: clamp(1.6rem, 2.5vw, 2.45rem);
+  line-height: 1;
+}
+
+.portfolio-heading h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4.3vw, 4rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.portfolio-heading h1 span {
+  display: block;
+  margin-top: 0.32rem;
+}
+
+/* Bento project grid */
+.work-showcase {
+  width: 100%;
+  margin-top: clamp(1.4rem, 2.5vw, 2.6rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(3, clamp(13rem, 19vw, 22rem));
+  grid-template-areas:
+    "feature feature wide wide"
+    "feature feature second third"
+    "fourth fifth footer footer";
+  gap: clamp(0.75rem, 1.2vw, 1.2rem);
+}
+
+.work-panel {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--panel-color);
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.work-panel:nth-child(1) { grid-area: feature; }
+.work-panel:nth-child(2) { grid-area: wide; }
+.work-panel:nth-child(3) { grid-area: second; }
+.work-panel:nth-child(4) { grid-area: third; }
+.work-panel:nth-child(5) { grid-area: fourth; }
+.work-panel:nth-child(6) { grid-area: fifth; }
+.work-panel:nth-child(7) { grid-area: footer; }
+
+.work-panel a {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: #ffffff;
+}
+
+.work-panel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 220ms ease;
+}
+
+.work-panel-title {
+  position: absolute;
+  inset: auto 16px 16px;
+  z-index: 1;
+  color: #ffffff;
+  font-size: clamp(0.85rem, 1.25vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+  overflow-wrap: anywhere;
+}
+
+.work-panel a::after {
+  position: absolute;
+  inset: 38% 0 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.62));
+  content: "";
+}
+
+.work-panel:hover .work-panel-image,
+.work-panel a:focus-visible .work-panel-image {
+  transform: scale(1.06);
+}
+
+.work-panel a:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: -4px;
+}
+
+/* CTA Pill Button */
+.projects-link {
+  margin-top: clamp(0.75rem, 1.5vw, 1.25rem);
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.45rem;
+  padding: 0.55rem 1.15rem;
+  border-radius: 9999px;
+  background: var(--primary-color);
+  color: #ffffff;
+  font-size: 0.94rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: transform 180ms ease, opacity 180ms ease;
+}
+
+.projects-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.projects-dialog {
+  position: fixed;
+  inset: 50% auto auto 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  width: min(68rem, calc(100vw - 2rem));
+  max-width: none;
+  max-height: min(88svh, 54rem);
+  padding: clamp(1.1rem, 3vw, 2rem);
+  overflow: auto;
+  border: 1px solid rgba(22, 22, 22, 0.12);
+  border-radius: 12px;
+  background: #ffffff;
+  color: #161616;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.25);
+}
+
+.projects-dialog::backdrop {
+  background: rgba(17, 17, 17, 0.62);
+  backdrop-filter: blur(5px);
+}
+
+.projects-dialog-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.projects-dialog-kicker {
+  margin: 0 0 0.3rem;
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.projects-dialog-header h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.projects-dialog-close {
+  display: inline-grid;
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  border: 1px solid rgba(22, 22, 22, 0.16);
+  border-radius: 50%;
+  background: transparent;
+  color: #161616;
+  cursor: pointer;
+}
+
+.projects-dialog-close:hover,
+.projects-dialog-close:focus-visible {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.projects-dialog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+}
+
+.projects-dialog-card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(22, 22, 22, 0.1);
+  border-radius: 8px;
+  background: #ffffff;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.projects-dialog-card:hover,
+.projects-dialog-card:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.projects-dialog-image {
+  display: block;
+  aspect-ratio: 1.55;
+  overflow: hidden;
+  background: #e3dfdb;
+}
+
+.projects-dialog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 240ms ease;
+}
+
+.projects-dialog-card:hover img,
+.projects-dialog-card:focus-visible img {
+  transform: scale(1.04);
+}
+
+.projects-dialog-card-footer {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.projects-dialog-card-footer > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.projects-dialog-card-footer svg {
+  flex: 0 0 auto;
+  color: var(--primary-color);
+}
+
+/* Services numbered columns */
+.service-list {
+  width: min(67rem, 88%);
+  margin-top: clamp(2rem, 3.5vw, 3.5rem);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  text-align: center;
+}
+
+.service-item p {
+  margin: 0 0 0.7rem;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.service-item h2 {
+  margin: 0;
+  font-size: clamp(0.88rem, 1.3vw, 1.05rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 720px) {
+  .portfolio-section {
+    padding-top: 4.5rem;
+    justify-content: center;
+  }
+
+  .work-showcase {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows:
+      minmax(11rem, 58vw)
+      minmax(9rem, 38vw)
+      repeat(2, minmax(8rem, 34vw))
+      minmax(9rem, 38vw);
+    grid-template-areas:
+      "feature feature"
+      "wide wide"
+      "second third"
+      "fourth fifth"
+      "footer footer";
+    gap: 0.65rem;
+  }
+
+  .work-panel-title {
+    inset-inline: 10px;
+    bottom: 10px;
+    font-size: 0.78rem;
+  }
+
+  .projects-link {
+    margin-top: 0.75rem;
+  }
+
+  .service-list {
+    width: 100%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.7rem 0.8rem;
+  }
+
+  .projects-dialog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 440px) {
+  .projects-dialog {
+    width: calc(100vw - 1rem);
+    max-height: 92svh;
+    padding: 1rem;
+  }
+
+  .projects-dialog-grid {
+    grid-template-columns: 1fr;
+  }
+}

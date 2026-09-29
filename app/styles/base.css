@@ -118,7 +118,7 @@ img {
 }
 
 .brand-logo-wrap {
-  width: clamp(150px, 14vw, 260px);
+  width: clamp(180px, 18vw, 300px);
 }
 
 .brand-logo-text-overlay,

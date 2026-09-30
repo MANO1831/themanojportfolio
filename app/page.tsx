@@ -7,6 +7,7 @@ import { Contact } from "./components/Contact";
 import { CommunityFooter } from "./components/CommunityFooter";
 import { Expertise } from "./components/Expertise";
 import Works1 from "./components/Works1";
+import ExploreTools from "./components/Explore-Tools";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
    
       <main className="page-content">
         <Hero />
+        <ExploreTools />
         <AboutMe />
         <Expertise 
         />

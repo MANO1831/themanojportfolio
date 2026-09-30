@@ -638,7 +638,7 @@ img {
 .page-content {
   display: flex;
   flex-direction: column;
-  gap: clamp(72px, 8vw, 140px);
+  gap: clamp(72px, 8vw, 100px);
   padding-top: 0;
 }
 

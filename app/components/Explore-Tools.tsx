@@ -1,63 +1,55 @@
-import {
-  SiFigma,
-  SiFramer,
-} from "react-icons/si";
-import { DiIllustrator, DiPhotoshop } from "react-icons/di";
-import type { IconType } from "react-icons";
+import Image from "next/image";
 
 import "../styles/Explore-Tools.css";
 
 const tools: {
   name: string;
-  icon?: IconType;
-  mark?: string;
+  logo: string;
   className: string;
 }[] = [
   {
     name: "Adobe Photoshop",
-    icon: DiPhotoshop,
+    logo: "/tool-logos/adobe-photoshop.svg",
     className: "photoshop",
   },
   {
     name: "Affinity",
-    mark: "a",
+    logo: "/tool-logos/affinity.svg",
     className: "affinity",
   },
   {
     name: "Adobe Illustrator",
-    icon: DiIllustrator,
+    logo: "/tool-logos/adobe-illustrator.svg",
     className: "illustrator",
   },
   {
     name: "Figma",
-    icon: SiFigma,
+    logo: "/tool-logos/figma.svg",
     className: "figma",
   },
   {
     name: "Framer",
-    icon: SiFramer,
+    logo: "/tool-logos/framer.svg",
     className: "framer",
   },
   {
     name: "Adobe XD",
-    mark: "Xd",
+    logo: "/tool-logos/adobe-xd.svg",
     className: "xd",
   },
   {
     name: "Adobe InDesign",
-    mark: "Id",
+    logo: "/tool-logos/adobe-indesign.svg",
     className: "indesign",
   },
 ];
 
 function renderTools() {
   return tools.map((tool) => {
-    const Icon = tool.icon;
-
     return (
       <div className="tool-item" key={tool.name}>
         <div className={`tool-icon ${tool.className}`}>
-          {Icon ? <Icon aria-hidden="true" /> : tool.mark}
+          <Image src={tool.logo} alt="" width={60} height={60} aria-hidden="true" />
         </div>
         <span>{tool.name}</span>
       </div>
@@ -78,10 +70,10 @@ export default function Home() {
           <h3 className="expertise-title">Discover the Tools</h3>
         </div>
 
-          <p className="description">
+          {/* <p className="description">
             Exploring the tools, technologies, and creative skills
             that shape my design journey.
-          </p>
+          </p> */}
         </div>
 
         {/* Tools */}

@@ -7,6 +7,14 @@
   text-wrap: balance;
 }
 
+.hero-greeting {
+  display: inline-block;
+  color: var(--orange);
+  font-family: var(--font-qwigley), cursive;
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .hero-foreground {
   transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1), filter 500ms ease;
 }
@@ -30,6 +38,10 @@
 }
 
 @media (max-width: 768px) {
+  .hero-greeting {
+    font-size: 2.5rem;
+  }
+
   .hero-section {
     overflow: visible;
   }

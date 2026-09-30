@@ -44,7 +44,7 @@ export function Experience() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ ...revealTransition }}
       >
-        <span className="experience-script">My Journey</span>
+        <span className="works-script">My Journey</span>
         <h2>Experience</h2>
       </motion.div>
 

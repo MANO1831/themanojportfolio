@@ -138,6 +138,13 @@ body {
   height: 100%;
 }
 
+.tool-icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 /* Photoshop */
 
 .photoshop {
@@ -224,7 +231,6 @@ body {
   }
 
   .heading-area .works-script {
-    font-size: clamp(2.1rem, 8vw, 2.7rem);
     margin-bottom: 10px;
   }
 
@@ -233,7 +239,7 @@ body {
   }
 
   .heading-area .expertise-title {
-    font-size: clamp(2rem, 8.5vw, 3rem);
+    font-size: var(--section-heading-size-mobile);
     line-height: 1.05;
   }
 
@@ -285,7 +291,7 @@ body {
   }
 
   .heading-area .expertise-title {
-    font-size: clamp(1.9rem, 8vw, 2.35rem);
+    font-size: var(--section-heading-size-mobile);
   }
 
   .heading-area .description {

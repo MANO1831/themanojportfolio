@@ -29,7 +29,8 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...heroTransition, delay: 0.05 }}
       >
-        <span className="eyebrow">Hai I&apos;m</span>
+         <span className="hero-greeting">Hai I &apos;m </span>
+        
         <h1>
           Manoj M
         </h1>
@@ -72,7 +73,7 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...heroTransition, delay: 0.25 }}
       >
-        <span>GRAPHIC &amp;</span>
+        <span>GRAPHIC&amp;</span>
         <strong>
           <span>UI/UX DESIGNER</span>
         </strong>

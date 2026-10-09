@@ -10,13 +10,28 @@
 
 @container (max-width: 600px) {
   .footer-meta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
+    flex-direction: row;
+    align-items: center;
+    gap: 14px;
+    padding-inline: 16px;
   }
 
   .footer-logo {
-    width: min(310px, 78%);
+    width: 100%;
+  }
+
+  .footer-logo-wrap {
+    align-self: center;
+    width: min(145px, 38%);
+  }
+
+  .copyright {
+    flex: 1;
+    min-width: 0;
+    justify-content: flex-end;
+    gap: 6px;
+    font-size: 0.75rem;
+    text-align: right;
   }
 }
 

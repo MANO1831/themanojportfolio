@@ -37,6 +37,11 @@ const revealTransition = {
 export function Experience() {
   return (
     <Reveal id="experience" className="experience-section">
+      <span
+        className="experience-edge-accent experience-edge-accent-top"
+        aria-hidden="true"
+      />
+
       <motion.div
         className="experience-header"
         initial={{ opacity: 0, y: 18 }}
@@ -44,8 +49,11 @@ export function Experience() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ ...revealTransition }}
       >
-        <span className="works-script">My Journey</span>
-        <h2>Experience</h2>
+        <span className="experience-eyebrow">
+          My Journey <span aria-hidden="true" />
+        </span>
+        <h2 className="experience-title">Professional Experience</h2>
+        <span className="experience-heading-accent" aria-hidden="true" />
       </motion.div>
 
       <motion.p
@@ -89,13 +97,24 @@ export function Experience() {
             transition={{ ...revealTransition, delay: index * 0.1 }}
             whileHover={{ y: -6, scale: 1.01 }}
           >
-            <div className="experience-icon">{role.icon}</div>
-            <div className="experience-card-date">{role.period}</div>
-            <h3>{role.title}</h3>
-            <p>{role.description}</p>
+            <div className="experience-card-meta">
+              <span className="experience-icon" aria-hidden="true">
+                {role.icon}
+              </span>
+              <span className="experience-card-date">{role.period}</span>
+            </div>
+            <div className="experience-card-content">
+              <h3>{role.title}</h3>
+              <p>{role.description}</p>
+            </div>
           </motion.article>
         ))}
       </div>
+
+      <span
+        className="experience-edge-accent experience-edge-accent-bottom"
+        aria-hidden="true"
+      />
     </Reveal>
   );
 }

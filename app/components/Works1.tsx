@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Outfit, Caveat } from "next/font/google";
 import { AllProjectsDialog } from "./AllProjectsDialog";
 import "../styles/Works1.css";
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
-
-const caveat = Caveat({
-  subsets: ["latin"],
-  variable: "--font-script",
-});
 
 export const metadata: Metadata = {
   title: "Creative Designs · Meaningful Experiences",
@@ -109,7 +99,7 @@ const projects = [
 
 export default function PortfolioPage() {
   return (
-    <main className={`portfolio-page ${outfit.variable} ${caveat.variable}`}>
+    <main className="portfolio-page">
       <section className="portfolio-section" aria-labelledby="recent-work-title">
         <header className="portfolio-heading">
           {/* <p className="portfolio-kicker">My Recent Work</p> */}

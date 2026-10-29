@@ -16,7 +16,7 @@
   overflow: hidden;
   background: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-sans), sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 }
 
 .portfolio-section {
@@ -37,8 +37,9 @@
 .portfolio-kicker {
   margin: 0 0 0.3rem;
   color: var(--primary-color);
-  font-family: var(--font-script), cursive;
-  font-size: clamp(1.6rem, 2.5vw, 2.45rem);
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
   line-height: 1;
 }
 

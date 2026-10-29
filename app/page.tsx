@@ -13,12 +13,13 @@ export default function Home() {
   return (
     <>
      <Header />
+     <Hero />
     <div className="portfolio-shell">
    
       <main className="page-content">
-        <Hero />
-        <ExploreTools />
+        
         <AboutMe />
+        <ExploreTools />
         <Expertise 
         />
         <Experience /> 

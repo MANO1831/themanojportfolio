@@ -1,74 +1,142 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "motion/react";
-import background from "@/src/assets/about-idea.png";
+import portrait from "@/src/assets/hero-portrait.png";
 import { Reveal } from "./Reveal";
 
-const revealTransition = {
-  duration: 0.7,
-  ease: [0.22, 1, 0.36, 1] as const,
-};
+const facts = [
+  {
+    label: "Primary focus",
+    value: "Brand identity & digital experiences",
+  },
+  {
+    label: "Design",
+    value: "Visual storytelling & user-focused design",
+  },
+  {
+    label: "Disciplines",
+    value: "Branding · UI/UX · digital marketing",
+  },
+  {
+    label: "Background",
+    value: "Full-stack development & visual design",
+  },
+];
 
 export default function AboutMe() {
   return (
     <Reveal className="about-section" id="about">
-      <motion.div
-        className="about-copy"
-        initial={{ opacity: 0, y: 28 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ ...revealTransition }}
-      >
-        <h2>
-          ABOUT <span>ME</span>
-        </h2>
+      <div className="about-layout">
+        <div className="about-intro">
+          <div className="about-eyebrow">
+            <span>ABOUT</span>
+            <span className="about-eyebrow-line" aria-hidden="true" />
+          </div>
 
-        <p className="lead">
-          I turn ideas into visuals that communicate.
-        </p>
+          <h2 className="about-title">
+            <span>Hi, I&apos;m</span>
+            <em>Manoj.</em>
+          </h2>
 
-        <p>
-          My approach combines creative thinking, visual storytelling, and
-          user-focused design to transform ideas into clear and engaging
-          experiences. I enjoy exploring the balance between aesthetics and
-          functionality, ensuring that every design not only looks good but
-          also communicates with purpose. From brand identity and digital
-          marketing to UI/UX design, I work across different areas of design
-          to solve visual and communication challenges.
-        </p>
+          <p className="about-lead">
+            I turn ideas into visuals that communicate.
+          </p>
 
-        <div className="drive-block">
-          <div className="quote-mark">“</div>
-          <div className="drive-copy">
-            <h3>What drives me</h3>
-            <p>
-              I believe great design is more than aesthetics. It should capture
-              attention, communicate clearly, solve problems, and create a
-              lasting impression.
-            </p>
+          <p className="about-description">
+            I combine creative thinking, visual storytelling, and user-focused
+            design to make clear, engaging experiences. From brand identity and
+            digital marketing to UI/UX, I balance aesthetics with function so
+            every design communicates with purpose.
+          </p>
+
+          <div className="about-actions">
+            <a className="about-action-primary" href="/resume.pdf" download>
+              Résumé <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              className="about-action-secondary"
+              href="https://www.behance.net/manomano27"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Behance <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              className="about-action-secondary"
+              href="https://www.linkedin.com/in/manoj-m-b5b27b228/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
 
-        <div className="works-script">Think. Create. Communicate.</div>
-      </motion.div>
-      <motion.div
-        className="hero-visual"
-        aria-hidden="true"
-        initial={{ opacity: 0, scale: 0.96, x: 24 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.25 }}
-        transition={{ ...revealTransition, delay: 0.1 }}
-      >
-        <Image
-          className="hero-foreground"
-          src={background}
-          alt=""
-          width={1440}
-          height={1024}
-          priority
-        />
-      </motion.div>
+        <article className="about-profile-card" aria-labelledby="about-profile-name">
+          {/* <span className="about-profile-clip" aria-hidden="true">
+            M
+          </span> */}
+
+          <div className="about-profile-header">
+            <span className="about-profile-monogram" aria-hidden="true">
+              M
+            </span>
+            <span className="about-profile-header-copy">
+              <strong>DESINGER</strong>
+              <span>Nov-2025- Still Now </span>
+            </span>
+            <span className="about-profile-status">Verified</span>
+          </div>
+
+          <div className="about-profile-body">
+            <div className="about-profile-photo">
+              <Image
+                src={portrait}
+                alt="Portrait of Manoj"
+                fill
+                sizes="(max-width: 700px) 170px, 190px"
+              />
+            </div>
+
+            <h3 id="about-profile-name" className="about-profile-name">
+              Manoj M.
+            </h3>
+            <p className="about-profile-role">Visual Communication Designer</p>
+
+            <div className="about-profile-details">
+              <div>
+                <span>FOCUS</span>
+                <strong>Brand &amp; Digital</strong>
+              </div>
+              <div>
+                <span>APPROACH</span>
+                <strong>Ideas with purpose</strong>
+              </div>
+            </div>
+
+            <div className="about-profile-footer">
+              <span className="about-profile-barcode" aria-hidden="true" />
+              <span>VISUALS THAT COMMUNICATE</span>
+            </div>
+          </div>
+        </article>
+
+        <aside className="about-facts" aria-label="Quick facts about Manoj">
+          <div className="about-facts-eyebrow">QUICK FACTS</div>
+
+          <dl className="about-facts-list">
+            {facts.map((fact) => (
+              <div className="about-fact-row" key={fact.label}>
+                <dt>{fact.label}</dt>
+                <dd>{fact.value}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <blockquote className="about-quote">
+            Great design should look good, communicate clearly, and leave a
+            lasting impression.
+          </blockquote>
+        </aside>
+      </div>
     </Reveal>
   );
 }

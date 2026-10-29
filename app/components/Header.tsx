@@ -1,10 +1,10 @@
 "use client";
 
+import { Bot, Menu, Moon, Send, Sun, X } from "lucide-react";
 import Image from "next/image";
-import { Bot, Menu, MessageCircle, Moon, Send, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import logo from "@/src/assets/manoj logo.png";
 import darkLogo from "@/src/assets/manoj logo white.png";
+
 const navItems = [
   { label: "About Me", href: "#about" },
   { label: "Expertise", href: "#expertise" },
@@ -95,8 +95,13 @@ export function Header() {
     <header className={`topbar${menuOpen ? " menu-open" : ""}`}>
       <a className="brand" href="#top" aria-label="Manoj portfolio home" onClick={() => setMenuOpen(false)}>
         <span className="brand-logo-wrap">
-          <Image className="brand-logo" src={darkMode ? darkLogo : logo} alt="Manoj Portfolio" width={100} height={100} priority />
-          {/* <Image className="brand-logo-text-overlay" src={darkMode ? darkLogo : logo} alt="" width={360} height={130} priority /> */}
+          <Image
+            className="brand-logo"
+            src={darkLogo}
+            alt="Manoj Creative Hub"
+            priority
+            sizes="(max-width: 900px) 220px, 300px"
+          />
         </span>
       </a>
 
@@ -118,7 +123,7 @@ export function Header() {
           </a>
         ))}
       </nav>
-
+{/* 
       <button
         className="theme-toggle"
         type="button"
@@ -127,10 +132,10 @@ export function Header() {
         onClick={() => setDarkMode((isDark) => !isDark)}
       >
         {darkMode ? <Sun aria-hidden="true" size={20} /> : <Moon aria-hidden="true" size={20} />}
-      </button>
+      </button> */}
 
       <button className="talk-btn" type="button" onClick={openChat}>
-        Let&apos;s Talk
+        Start Project
       </button>
 
       {chatOpen ? (

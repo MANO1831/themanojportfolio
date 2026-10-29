@@ -19,8 +19,7 @@
  */
 
 @theme inline {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-script: "Caveat", cursive;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -161,10 +160,6 @@
   body {
     font-family: var(--font-sans);
   }
-}
-
-@utility font-script {
-  font-family: var(--font-script);
 }
 
 @utility text-outline {

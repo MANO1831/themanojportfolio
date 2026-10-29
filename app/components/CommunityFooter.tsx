@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Mail } from "lucide-react";
-import logo from "@/src/assets/manoj logo.png";
 import darkLogo from "@/src/assets/manoj logo white.png";
 import { Reveal } from "./Reveal";
 

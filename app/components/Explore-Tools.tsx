@@ -64,8 +64,8 @@ export default function Home() {
 
         {/* Heading */}
          <div className="heading-area">
-          <span className="works-script">Tools I Use. Skills I Build.
-</span>
+          {/* <span className="works-script">Tools I Use. Skills I Build.
+</span> */}
         <div className="expertise-title-wrap">
           <h3 className="expertise-title">Discover the Tools</h3>
         </div>

@@ -1,31 +1,16 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 import { useState } from "react";
 import { Reveal } from "./Reveal";
-import experienceBanner from "@/src/assets/experience-bg.jpg";
-
-const formFields = [
-  { label: "Your Name", placeholder: "Enter your name", type: "text" },
-  { label: "Your Email", placeholder: "Enter your email address", type: "email" },
-  { label: "Your Phone", placeholder: "Enter your phone number", type: "tel" },
-  { label: "Project Type", placeholder: "Select a project type", type: "text" },
-];
 
 const recipientEmail = "manomano1831@gmail.com";
 const formSubmitEndpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
-const revealTransition = {
-  duration: 0.7,
-  ease: [0.22, 1, 0.36, 1] as const,
-};
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "",
-    projectType: "",
     message: "",
   });
   const [submitState, setSubmitState] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -38,10 +23,6 @@ export function Contact() {
     event.preventDefault();
     setSubmitState("sending");
 
-    const subject = formData.projectType
-      ? `Project enquiry: ${formData.projectType}`
-      : "New project enquiry";
-
     try {
       const response = await fetch(formSubmitEndpoint, {
         method: "POST",
@@ -51,7 +32,7 @@ export function Contact() {
         },
         body: JSON.stringify({
           ...formData,
-          _subject: subject,
+          _subject: "Project enquiry",
           _captcha: "false",
         }),
       });
@@ -59,97 +40,127 @@ export function Contact() {
       if (!response.ok) throw new Error("Message could not be sent.");
 
       setSubmitState("success");
-      setFormData({ name: "", email: "", phone: "", projectType: "", message: "" });
+      setFormData({ name: "", email: "", message: "" });
     } catch {
       setSubmitState("error");
     }
   };
 
   return (
-    <Reveal id="contact" className="contact-section">
-      <motion.div
-        className="contact-left-column"
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ ...revealTransition }}
-      >
-        <div className="contact-copy">
-          <span className="contact-script">Let&apos;s Connect</span>
-          <h2>
-            Get In <span>Touch</span>
-          </h2>
+    <Reveal id="contact" className="contact-shell">
+      <div className="contact-header-row">
+        <div className="contact-title-tag">
+          <span className="experience-eyebrow">
+            Let&apos;s Work Together <span aria-hidden="true" />
+          </span>
+        </div>
 
-          <p>
-            Have a project in mind or looking for a creative designer? I&apos;d love to hear from you.
-            Let&apos;s discuss your ideas and create something meaningful together.
+        {/* <div className="contact-meta">
+          <span>(CQ°—13)</span>
+          <span>©2025</span>
+        </div> */}
+      </div>
+
+      <div className="contact-layout">
+        <motion.div
+          className="contact-left-column"
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <button type="button" className="contact-pill-btn">
+            <span className="contact-pill-icon" aria-hidden="true">✦</span>
+            <span>Contact Now</span>
+          </button>
+
+          <h2 className="contact-big-title">Contact Me!</h2>
+
+          <p className="contact-copy">
+            Let&apos;s create something amazing together! Reach out and I&apos;d love to hear about your project and ideas.
           </p>
-        </div>
 
-        <div className="contact-visual-wrap">
-          <div className="contact-visual" aria-hidden="true">
-            <div className="experience-scene">
-              <Image
-                src={experienceBanner}
-                alt=""
-                fill
-                priority
-                className="experience-banner-image"
-              />
+          <div className="contact-support-list">
+            <div className="support-item">
+              <span className="support-plus" aria-hidden="true">+</span>
+              <span>24/7 Full Time Support</span>
+            </div>
+            <div className="support-item">
+              <span className="support-plus" aria-hidden="true">+</span>
+              <span>Available Worldwide</span>
             </div>
           </div>
-        </div>
-      </motion.div>
 
-      <motion.div
-        className="contact-form-panel"
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ ...revealTransition, delay: 0.08 }}
-      >
-        <h3>Send Me a Message</h3>
+          <button type="button" className="contact-cta-button">
+            <span className="contact-cta-circle" aria-hidden="true">→</span>
+            <span>Contact now</span>
+          </button>
+        </motion.div>
 
-        <form className="contact-form" onSubmit={handleSubmit}>
-          {formFields.map((field) => (
-            <div key={field.label} className="field-group">
-              <label htmlFor={field.label.toLowerCase().replaceAll(" ", "-")}>{field.label}</label>
+        <motion.div
+          className="contact-form-panel"
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
+        >
+          <div className="form-corner" aria-hidden="true" />
+
+          <form className="contact-form" onSubmit={handleSubmit}>
+            <div className="field-group">
+              <label htmlFor="name">Name*</label>
               <input
-                id={field.label.toLowerCase().replaceAll(" ", "-")}
-                type={field.type}
-                placeholder={field.placeholder}
-                value={formData[field.label === "Your Name" ? "name" : field.label === "Your Email" ? "email" : field.label === "Your Phone" ? "phone" : "projectType"]}
-                onChange={(event) => updateField(field.label === "Your Name" ? "name" : field.label === "Your Email" ? "email" : field.label === "Your Phone" ? "phone" : "projectType", event.target.value)}
-                required={field.label === "Your Name" || field.label === "Your Email"}
+                id="name"
+                type="text"
+                placeholder=""
+                value={formData.name}
+                onChange={(event) => updateField("name", event.target.value)}
+                required
               />
             </div>
-          ))}
 
-          <div className="field-group">
-            <label htmlFor="message">Your Message</label>
-            <textarea
-              id="message"
-              placeholder="Tell me about your project, goals, and requirements."
-              rows={5}
-              value={formData.message}
-              onChange={(event) => updateField("message", event.target.value)}
-              required
-            />
-          </div>
+            <div className="field-group">
+              <label htmlFor="email">Email*</label>
+              <input
+                id="email"
+                type="email"
+                placeholder=""
+                value={formData.email}
+                onChange={(event) => updateField("email", event.target.value)}
+                required
+              />
+            </div>
 
-          <motion.button
-            type="submit"
-            className="submit-btn"
-            disabled={submitState === "sending"}
-            whileHover={{ y: -2, scale: 1.01 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            {submitState === "sending" ? "Sending..." : "Send Message"} <span aria-hidden="true">→</span>
-          </motion.button>
-          {submitState === "success" ? <p className="form-status success" role="status">Thanks. Your message was sent successfully.</p> : null}
-          {submitState === "error" ? <p className="form-status error" role="alert">The message could not be sent. Please try again or email {recipientEmail} directly.</p> : null}
-        </form>
-      </motion.div>
+            <div className="field-group">
+              <label htmlFor="message">Message*</label>
+              <textarea
+                id="message"
+                rows={4}
+                value={formData.message}
+                onChange={(event) => updateField("message", event.target.value)}
+                required
+              />
+            </div>
+
+            <motion.button
+              type="submit"
+              className="submit-btn"
+              disabled={submitState === "sending"}
+              whileHover={{ y: -2, scale: 1.01 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              {submitState === "sending" ? "Sending..." : "Submit Now"}
+            </motion.button>
+
+            {submitState === "success" ? (
+              <p className="form-status success" role="status">Thanks. Your message was sent successfully.</p>
+            ) : null}
+            {submitState === "error" ? (
+              <p className="form-status error" role="alert">The message could not be sent. Please try again or email {recipientEmail} directly.</p>
+            ) : null}
+          </form>
+        </motion.div>
+      </div>
     </Reveal>
   );
 }

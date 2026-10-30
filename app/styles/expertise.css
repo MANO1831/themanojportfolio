@@ -19,7 +19,6 @@
   z-index: -1;
   inset: 0 auto 0 50%;
   width: 100vw;
-  border: 1px solid #08aee8;
   background: #050405;
   content: "";
   transform: translateX(-50%);
@@ -76,7 +75,6 @@
   width: 100%;
   margin: 18px 0 0;
   padding: 3px 12px;
-  border: 1px solid #08aee8;
   color: var(--expertise-ink);
   font-size: clamp(1.9rem, 2.9vw, 2.55rem);
   font-weight: 750;
@@ -96,7 +94,7 @@
   height: 4px;
   margin-top: 18px;
   border-radius: 999px;
-  background: #f22ad4;
+  /* background: #f22ad4; */
 }
 
 .expertise-list {

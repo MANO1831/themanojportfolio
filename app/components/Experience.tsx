@@ -50,7 +50,7 @@ export function Experience() {
         transition={{ ...revealTransition }}
       >
         <span className="experience-eyebrow">
-          My Journey <span aria-hidden="true" />
+My Journey <span aria-hidden="true" />
         </span>
         <h2 className="experience-title">Professional Experience</h2>
         <span className="experience-heading-accent" aria-hidden="true" />
@@ -75,7 +75,9 @@ export function Experience() {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ ...revealTransition, delay: 0.12 }}
       >
-        <div className="experience-scene">
+        
+      </motion.div>
+      <div className="experience-scene">
           <Image
             src={experienceBanner}
             alt=""
@@ -84,7 +86,6 @@ export function Experience() {
             className="experience-banner-image"
           />
         </div>
-      </motion.div>
 
       <div className="experience-cards">
         {roles.map((role, index) => (

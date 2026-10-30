@@ -1,5 +1,5 @@
 import Image from "next/image";
-import portrait from "@/src/assets/hero-portrait.png";
+import portrait from "@/src/assets/hero-portrait2.png";
 import { Reveal } from "./Reveal";
 
 const facts = [
@@ -71,45 +71,51 @@ export default function AboutMe() {
         </div>
 
         <article className="about-profile-card" aria-labelledby="about-profile-name">
-          {/* <span className="about-profile-clip" aria-hidden="true">
-            M
-          </span> */}
-
           <div className="about-profile-header">
             <span className="about-profile-monogram" aria-hidden="true">
               M
             </span>
             <span className="about-profile-header-copy">
-              <strong>DESINGER</strong>
-              <span>Nov-2025- Still Now </span>
+              <strong>DESIGNER</strong>
+              <span>Nov 2025 — Present</span>
             </span>
             <span className="about-profile-status">Verified</span>
           </div>
 
           <div className="about-profile-body">
+            <div className="about-profile-copy">
+              <h3 id="about-profile-name" className="about-profile-name">
+                Manoj M.
+              </h3>
+              <span className="about-profile-heading-accent" aria-hidden="true" />
+              <p className="about-profile-role">Visual Communication Designer</p>
+
+              <div className="about-profile-details">
+                <div>
+                  <span className="about-detail-icon" aria-hidden="true">✦</span>
+                  <span className="about-detail-copy">
+                    <small>FOCUS</small>
+                    <strong>Brand &amp; Digital</strong>
+                  </span>
+                </div>
+                <div>
+                  <span className="about-detail-icon about-detail-icon--target" aria-hidden="true">◎</span>
+                  <span className="about-detail-copy">
+                    <small>APPROACH</small>
+                    <strong>Ideas with purpose</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="about-profile-orbit" aria-hidden="true" />
             <div className="about-profile-photo">
               <Image
                 src={portrait}
                 alt="Portrait of Manoj"
                 fill
-                sizes="(max-width: 700px) 170px, 190px"
+                sizes="(max-width: 760px) 75vw, 330px"
               />
-            </div>
-
-            <h3 id="about-profile-name" className="about-profile-name">
-              Manoj M.
-            </h3>
-            <p className="about-profile-role">Visual Communication Designer</p>
-
-            <div className="about-profile-details">
-              <div>
-                <span>FOCUS</span>
-                <strong>Brand &amp; Digital</strong>
-              </div>
-              <div>
-                <span>APPROACH</span>
-                <strong>Ideas with purpose</strong>
-              </div>
             </div>
 
             <div className="about-profile-footer">

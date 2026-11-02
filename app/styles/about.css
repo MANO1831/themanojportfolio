@@ -28,12 +28,12 @@
 
 .about-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1.14fr) minmax(250px, 0.78fr) minmax(0, 0.94fr);
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   align-items: center;
   gap: clamp(28px, 4.2vw, 68px);
   width: min(100%, 1500px);
   margin-inline: auto;
-  padding: 100px;
+  padding: clamp(20px, 6vw, 88px);
 }
 
 .about-intro {
@@ -542,7 +542,7 @@
 @media (max-width: 420px) {
   .about-title {
     column-gap: 0.15em;
-    font-size: clamp(3rem, 12vw, 3.35rem);
+    font-size: clamp(2.5rem, 11vw, 3.35rem);
   }
 
   .about-actions {
@@ -558,6 +558,23 @@
 
   .about-profile-body {
     padding-inline: 17px;
+  }
+
+  .about-profile-header {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px;
+  }
+
+  .about-profile-monogram {
+    width: 48px;
+    height: 48px;
+    flex-basis: 48px;
+    font-size: 2rem;
+  }
+
+  .about-profile-status {
+    padding: 7px 9px;
   }
 
   .about-fact-row {

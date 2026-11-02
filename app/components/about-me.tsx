@@ -25,52 +25,7 @@ export default function AboutMe() {
   return (
     <Reveal className="about-section" id="about">
       <div className="about-layout">
-        <div className="about-intro">
-          <div className="about-eyebrow">
-            <span>ABOUT</span>
-            <span className="about-eyebrow-line" aria-hidden="true" />
-          </div>
-
-          <h2 className="about-title">
-            <span>Hi, I&apos;m</span>
-            <em>Manoj.</em>
-          </h2>
-
-          <p className="about-lead">
-            I turn ideas into visuals that communicate.
-          </p>
-
-          <p className="about-description">
-            I combine creative thinking, visual storytelling, and user-focused
-            design to make clear, engaging experiences. From brand identity and
-            digital marketing to UI/UX, I balance aesthetics with function so
-            every design communicates with purpose.
-          </p>
-
-          <div className="about-actions">
-            <a className="about-action-primary" href="/resume.pdf" download>
-              Résumé <span aria-hidden="true">↓</span>
-            </a>
-            <a
-              className="about-action-secondary"
-              href="https://www.behance.net/manomano27"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Behance <span aria-hidden="true">↗</span>
-            </a>
-            <a
-              className="about-action-secondary"
-              href="https://www.linkedin.com/in/manoj-m-b5b27b228/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <article className="about-profile-card" aria-labelledby="about-profile-name">
+         <article className="about-profile-card" aria-labelledby="about-profile-name">
           <div className="about-profile-header">
             <span className="about-profile-monogram" aria-hidden="true">
               M
@@ -124,8 +79,52 @@ export default function AboutMe() {
             </div>
           </div>
         </article>
+        <div className="about-intro">
+          <div className="about-eyebrow">
+            <span>ABOUT</span>
+            <span className="about-eyebrow-line" aria-hidden="true" />
+          </div>
 
-        <aside className="about-facts" aria-label="Quick facts about Manoj">
+          <h2 className="about-title">
+            <span>Hi, I&apos;m</span>
+            <em>Manoj.</em>
+          </h2>
+
+          <p className="about-lead">
+            I turn ideas into visuals that communicate.
+          </p>
+
+          <p className="about-description">
+            I combine creative thinking, visual storytelling, and user-focused
+            design to make clear, engaging experiences. From brand identity and
+            digital marketing to UI/UX, I balance aesthetics with function so
+            every design communicates with purpose.
+          </p>
+
+          <div className="about-actions">
+            <a className="about-action-primary" href="/resume.pdf" download>
+              Résumé <span aria-hidden="true">↓</span>
+            </a>
+            <a
+              className="about-action-secondary"
+              href="https://www.behance.net/manomano27"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Behance <span aria-hidden="true">↗</span>
+            </a>
+            <a
+              className="about-action-secondary"
+              href="https://www.linkedin.com/in/manoj-m-b5b27b228/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              LinkedIn <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        {/* <aside className="about-facts" aria-label="Quick facts about Manoj">
           <div className="about-facts-eyebrow">QUICK FACTS</div>
 
           <dl className="about-facts-list">
@@ -141,7 +140,7 @@ export default function AboutMe() {
             Great design should look good, communicate clearly, and leave a
             lasting impression.
           </blockquote>
-        </aside>
+        </aside> */}
       </div>
     </Reveal>
   );
